@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5.生命周期</title>
+</head>
+<body>
+<div id="app">
+    <p>{{message}}</p>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        data:{
+            message:'hello'
+        },
+        created() {
+            alert('创建');
+        },
+        beforeCompile() {
+            alert('编译前');
+        },
+        compiled() {
+            alert('编译完成');
+        },
+        ready() {
+            alert('准备好了');
+        },
+        beforeDestroy() {
+            alert('销毁前');
+        },
+        destroyed() {
+            alert('销毁');
+        }
+    });
+    // 手动挂载 指定el元素
+    vm.$mount('#app');
+    // 销毁需要调用$destroy
+    vm.$destroy();
+
+    /*
+        created	先实例化,在实例化后(检测el)
+        vm.$mount('#app')	手动挂载实例
+        beforeCompile	开始编译之前
+        compiled	编译完成后
+        ready	插入文档后
+        vm.$destroy()	手动销毁实例
+        beforeDestroy	将要销毁
+        destroyed	销毁实例
+     */
+</script>
+</body>
+</html>
