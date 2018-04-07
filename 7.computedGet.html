@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>7.属性的获取和设置</title>
+</head>
+<body>
+<div id="app">
+    <p>{{sum}}</p>
+    <input type="text" v-model="count">
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            price:20,
+            count:5
+        },
+        computed: {
+            sum: {
+                get() { // 默认的方法是获取
+                    // 在vm中所有的this指向的都是当前实例
+                    return this.price * this.count;
+                },
+                set(val) {
+                    // 在设置方法去更改其他属性
+                    this.price = val;
+                }
+            }
+        }
+    });
+    vm.sum = 100;
+</script>
+</body>
+</html>
