@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.双向数据绑定v-model</title>
+</head>
+<body>
+<div class="app">
+    <!--在angularjs中应用ng-model-->
+    <p>v-model: <input type="text" v-model="message"></p>
+    <!-- {{}}将模型的数据取出显示到页面上-->
+    <!--绑定表达式：支持三元表达式-->
+    <p>{{message ? message: 'init data'}}</p>
+    <hr>
+
+    <!-- {{{}}}将html类型的数据正常绑定到页面上-->
+    <p>v-html: <span v-html="rawHtml"></span></p>
+
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'.app',
+        data:{
+            message:'hello',
+            rawHtml:'<b>Hello World</b>'
+        }
+    })
+</script>
+</body>
+</html>
