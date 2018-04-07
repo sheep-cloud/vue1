@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3.Vue的实例</title>
+</head>
+<body>
+<div id="app">
+    <p>{{message.name}}</p>
+    <p>{{message.age}}</p>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    var mess = {
+        name:'hello'
+    }
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            message:mess
+        }
+    });
+    // 当前实例vm和mess这个对象指向的是同一个内存空间
+    // vm.message.name = 'Jack';
+    // 在实例创建后挂载以前不存在的属性是不会刷新视图的
+    // mess.age = 100;
+    vm.message.name = 'Jack';
+    alert(vm.message == mess);
+</script>
+</body>
+</html>
